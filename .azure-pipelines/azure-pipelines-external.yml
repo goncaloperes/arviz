@@ -69,7 +69,8 @@ jobs:
 
       python -m pip --no-cache-dir install torch -f https://download.pytorch.org/whl/cpu/torch_stable.html
 
-      python -m pip install --no-cache-dir -r requirements-external.txt
+      grep -Ev '^pystan|^emcee|^pymc3' requirements-external.txt | xargs python -m pip install --no-cache-dir
+      
     displayName: 'Install packages'
 
   - script: |
